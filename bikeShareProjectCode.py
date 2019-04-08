@@ -31,7 +31,7 @@ def get_filters():
         month = input('Please include a month for this data - january to june or all to include every month:\n').lower()
         if month not in months:
             print('-'*40)
-            print("Wrong inout for month. Please enter either all, january, february, march, april, may, or june")
+            print("Wrong input for month. Please enter either all, january, february, march, april, may, or june")
     day=""
     days =("all","sunday","monday","tuesday","wednesday","thursday","friday","saturday")
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
@@ -195,7 +195,8 @@ def display_raw_data(df):
         while input("Would you like to see more raw data? Enter yes Or no:\n").lower() != "no":
             print(df.iloc[rawLocation:rawLocation+5])
             rawLocation+=5
-
+    else:
+        print("Raw data viewer exited")
 
 def main():
     while True:
@@ -211,9 +212,9 @@ def main():
         user_stats(df)
         display_raw_data(df)
 
-
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
+            print("Exited successfully.")
             break
 
 
