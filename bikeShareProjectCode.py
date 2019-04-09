@@ -2,6 +2,7 @@ import time
 import pandas as pd
 import numpy as np
 
+#Dictionary for city data.
 CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
@@ -14,7 +15,7 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    #print('Which city information would you like to view? -Chicago, New York City or Washington')
+
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     city = ""
@@ -43,7 +44,6 @@ def get_filters():
     print('-'*40)
     return city, month, day
 
-
 def load_data(city, month, day):
     """
     Loads data for the specified city and filters by month and day if applicable.
@@ -63,20 +63,15 @@ def load_data(city, month, day):
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
-        #print(month)
 
         # filter by month to create the new dataframe
         df = df[df['month'] == month]
-        #print(df)
 
     # filter by day of week if applicable
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
-        #print(df)
 
-
-    #print (df['day_of_week'].mode()[0])
     return df
 
 def time_stats(df):
@@ -163,9 +158,6 @@ def user_stats(df):
     except:
         print("Gender info not available for Washington")
 
-
-
-
     # TO DO: Display earliest, most recent, and most common year of birth
     try:
         earliest_birth = df['Birth Year'].min()
@@ -180,12 +172,8 @@ def user_stats(df):
     except:
         print('Age data not present for Washington')
 
-
-
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-
-
 
 def display_raw_data(df):
     rawData = input("Would you like to see raw data? Enter yes or no:\n").lower()
@@ -216,7 +204,6 @@ def main():
         if restart.lower() != 'yes':
             print("Exited successfully.")
             break
-
 
 if __name__ == "__main__":
 	main()
